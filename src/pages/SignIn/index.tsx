@@ -1,11 +1,39 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {Button, Gap, PageHeader, TextInput} from '../../components/';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Sign In Page</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <PageHeader
+        label="Sign In"
+        backButton={false}
+        navigation={navigation}
+        nav={SignIn}
+      />
+      <Gap height={24} />
+      <View style={styles.contentWrapper}>
+        <Gap height={24} />
+        <TextInput
+          label="Email Address"
+          placeholder="Type your email address"
+        />
+        <Gap height={16} />
+        <TextInput label="Password" placeholder="Type your password" />
+        <Gap height={24} />
+        <Button
+          label="Sign In"
+          onPress={() => navigation.navigate('HomePage')}
+        />
+        <Gap height={12} />
+        <Button
+          label="Add New Account"
+          backgroundColor="#8D92A3"
+          textColor="#FFFFFF"
+          onPress={() => navigation.navigate('SignUp')}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
@@ -13,13 +41,11 @@ export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFF0',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'Top',
   },
-  text: {
-    fontSize: 45,
-    fontFamily: 'Poppins-Medium',
+  contentWrapper: {
+    backgroundColor: '#FFFFFF',
+    flex: 1,
+    paddingHorizontal: 24,
   },
 });
